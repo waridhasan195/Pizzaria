@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.mainTitle{
+    font-weight: 800;
+    color: dimgray
+}
