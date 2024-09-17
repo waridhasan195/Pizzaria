@@ -18,6 +18,11 @@ body {
 }
 
 .mainTitle{
+.mainTitle{
     font-weight: 800;
     color: dimgray
+}
+
+.pizza-img :hover{
+    transform : scale(1.5);
 }
