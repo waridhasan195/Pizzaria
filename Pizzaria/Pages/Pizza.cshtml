@@ -3,66 +3,84 @@
 @{
 }
 
-<p>This is Pizza Page.</p>
-<a class="btn btn-primary mt-1" asp-area="" asp-page="/Forms/CustomPizza">Custom Pizza</a>
-<br />
-<a class="btn btn-primary mt-1" asp-area="" asp-page="/Checkout/Checkout">CheckOut</a>
+
 
 <div class="container">
+    <div class="row">
+        <div class="col-12 mb-5 mt-5">
+            <p>This is Pizza Page.</p>
+            <a class="btn btn-primary mt-1" asp-area="" asp-page="/Forms/CustomPizza">Custom Pizza</a>
+            <br />
+            <a class="btn btn-primary mt-1" asp-area="" asp-page="/Checkout/Checkout">CheckOut</a>
+        </div>
 
+        @foreach(var pizza in Model.fakePizzaDb)
+        {
+            var imagePath = "~/images/pizzas/" + (pizza.ImageTitle + ".jpg");
+            <div class="col-4 mb-5">
+                <img src="@imagePath" class="w-100" asp-append-version="true" />
+                <h3>@pizza.PizzaName</h3>
+                <a class="btn btn-primary mt-1" asp-area="" asp-page="Checkout/Checkout" asp-route-imageTitle="@pizza.ImageTitle" asp-route-PizzaPrice="@pizza.FinalPrice">Get this Pizza for-@pizza.FinalPrice$ </a>
+                <br />
+            </div>
+        }
 
-    <div class="card-group">
-        <div class="card">
-            <img class="card-img-top" src="~/images/Cheese_pizza/1.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/images/Cheese_pizza/2.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/images/Cheese_pizza/3.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
     </div>
-
-    <div class="card-group">
-        <div class="card">
-            <img class="card-img-top" src="~/images/Cheese_pizza/4.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/images/Cheese_pizza/5.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="~/images/Cheese_pizza/6.jpg" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-            </div>
-        </div>
-    </div>
-
 </div>
+
+
+@* 
+    <div class="card-group">
+        <div class="card">
+            <img class="card-img-top" src="~/images/pizzas/BBQ Chicken.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">BBQ Chicken Pizza</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/pizzas/Buffalo Pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Buffalo Pizza</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/pizzas/CheesePizza.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Cheese Pizza</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-group">
+        <div class="card">
+            <img class="card-img-top" src="~/images/pizzas/Hawaiian Pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Hawaiian Pizza</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/pizzas/Margherita Pizza.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Margherita Pizza</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="~/images/pizzas/margherita.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">margherita</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
+        </div>
+    </div> *@
+
